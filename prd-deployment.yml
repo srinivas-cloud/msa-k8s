@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: product
+  labels:
+    app: product
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: product
+  template:
+    metadata:
+      labels:
+        app: product
+    spec:
+      containers:
+        - name: product
+          image: msa/product
+          imagePullPolicy: Never
+          env:
+            - name: DS_SERVICE
+              value: discovery
+            - name: DB_SERVICE
+              value: postgres
+            - name: DB_PORT
+              value: "5432"
+            - name: DB_PASSWORD
+              value: password
+            - name: DB_NAME
+              value: postgres
+          ports:
+          - containerPort: 8081
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: product
+  labels:
+    app: product
+spec:
+  ports:
+    - port: 8081
+      protocol: TCP
+  selector:
+    app: product
+  type: NodePort

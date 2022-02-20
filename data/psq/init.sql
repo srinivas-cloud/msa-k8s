@@ -1,0 +1,5 @@
+CREATE DATABASE catalog_db;
+GRANT ALL PRIVILEGES ON DATABASE catalog_db TO postgres;
+
+CREATE DATABASE cart_db;
+GRANT ALL PRIVILEGES ON DATABASE myApp_test TO postgres;

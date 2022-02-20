@@ -1,0 +1,92 @@
+[
+    {
+        "productID": 123,
+        "productName": "sample",
+        "productDesc": "sample desc",
+        "skus": [
+            {
+                "id": 8002,
+                "name": "sample sku",
+                "skuId": "789"
+            },
+            {
+                "id": 8001,
+                "name": "sample sku",
+                "skuId": "789"
+            }
+        ],
+        "productDetails": null
+    },
+    {
+        "productID": 124,
+        "productName": "sample1",
+        "productDesc": "sample1 desc",
+        "skus": [
+            {
+                "id": 8003,
+                "name": "sample1 sku",
+                "skuId": "7894"
+            },
+            {
+                "id": 8004,
+                "name": "sample1 sku",
+                "skuId": "7892"
+            }
+        ],
+        "productDetails": null
+    },
+    {
+        "productID": 125,
+        "productName": "sample2",
+        "productDesc": "sample2 desc",
+        "skus": [
+            {
+                "id": 8006,
+                "name": "sample1 sku",
+                "skuId": "7894"
+            },
+            {
+                "id": 8005,
+                "name": "sample2 sku",
+                "skuId": "7892"
+            }
+        ],
+        "productDetails": null
+    },
+    {
+        "productID": 126,
+        "productName": "iphone",
+        "productDesc": "iphone desc",
+        "skus": [
+            {
+                "id": 8008,
+                "name": "iphone sku",
+                "skuId": "78921"
+            },
+            {
+                "id": 8007,
+                "name": "iphone sku",
+                "skuId": "78941"
+            }
+        ],
+        "productDetails": null
+    },
+    {
+        "productID": 127,
+        "productName": "iphoneS",
+        "productDesc": "iphoneS desc",
+        "skus": [
+            {
+                "id": 8010,
+                "name": "iphoneS sku",
+                "skuId": "12345"
+            },
+            {
+                "id": 8009,
+                "name": "iphoneS sku",
+                "skuId": "45678"
+            }
+        ],
+        "productDetails": null
+    }
+]

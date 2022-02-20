@@ -1,0 +1,59 @@
+version: "3.8"
+services:
+  PostgreSQL:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_USER=postgres
+      - POSTGRES_MULTIPLE_DATABASES=postgres
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+  ds-service:
+    build: ./DS
+    ports:
+      - "8761:8761"
+    depends_on:
+      - PostgreSQL
+  product-service:
+    build: ./Product
+    ports:
+      - "8081:8081"
+    depends_on:
+      - PostgreSQL
+      - ds-service
+    links:
+      - PostgreSQL:PostgreSQL
+    environment:
+      - DB_SERVICE=PostgreSQL
+      - DB_PORT=5432
+      - DB_PASSWORD=password
+      - DS_SERVICE=ds-service
+      - DB_NAME=postgres
+  cart-service:
+    build: ./cart
+    ports:
+      - "8082:8082"
+    depends_on:
+      - ds-service
+      - PostgreSQL
+    environment:
+      - DB_SERVICE=PostgreSQL
+      - DB_PORT=5432
+      - DB_PASSWORD=password
+      - DS_SERVICE=ds-service
+      - DB_NAME=postgres
+  api-service:
+    build: ./APIGateway
+    ports:
+      - "8008:8008"
+    depends_on:
+      - ds-service
+    environment:
+      - DS_SERVICE=ds-service
+volumes:
+  db_data:
